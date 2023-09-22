@@ -1,0 +1,2 @@
+require('aqln')
+print('hello')
