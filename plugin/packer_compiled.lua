@@ -110,6 +110,11 @@ _G.packer_plugins = {
     path = "/Users/slavalaskin/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/Users/slavalaskin/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/windwp/nvim-autopairs"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/Users/slavalaskin/.local/share/nvim/site/pack/packer/start/nvim-cmp",

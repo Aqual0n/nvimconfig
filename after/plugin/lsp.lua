@@ -14,8 +14,17 @@ require('mason-lspconfig').setup({
     handlers = {
         lsp_zero.default_setup,
         cssls = function ()
+            require'lspconfig'.lua_ls.setup {
+                settings = {
+                    Lua = {
+                        diagnostics = {
+                            globals = { 'vim' }
+                        }
+                    }
+                },
+            }
             require'lspconfig'.cssls.setup {
-                settings = { 
+                settings = {
                     css = { validate = true, lint = { unknownAtRules = "ignore" } },
                     less = { validate = true, lint = { unknownAtRules = "ignore" } },
                     scss = { validate = true, lint = { unknownAtRules = "ignore" } },
