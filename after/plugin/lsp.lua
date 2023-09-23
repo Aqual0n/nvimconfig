@@ -1,4 +1,5 @@
 local lsp_zero = require('lsp-zero')
+local lspconfig = require'lspconfig'
 
 lsp_zero.on_attach(function(client, bufnr)
     -- see :help lsp-zero-keybindings
@@ -14,7 +15,7 @@ require('mason-lspconfig').setup({
     handlers = {
         lsp_zero.default_setup,
         cssls = function ()
-            require'lspconfig'.lua_ls.setup {
+            lspconfig.lua_ls.setup {
                 settings = {
                     Lua = {
                         diagnostics = {
@@ -23,13 +24,23 @@ require('mason-lspconfig').setup({
                     }
                 },
             }
-            require'lspconfig'.cssls.setup {
+            lspconfig.cssls.setup {
                 settings = {
                     css = { validate = true, lint = { unknownAtRules = "ignore" } },
                     less = { validate = true, lint = { unknownAtRules = "ignore" } },
                     scss = { validate = true, lint = { unknownAtRules = "ignore" } },
                 },
             }
+            lspconfig.eslint.setup({
+                flags = { debounce_text_changes = 500 },
+                on_attach = function()
+                    vim.api.nvim_create_autocmd('BufWritePre', {
+                        pattern = { '*.tsx', '*.ts', '*.jsx', '*.js' },
+                        command = 'silent! EslintFixAll',
+                        group = vim.api.nvim_create_augroup('MyAutocmdsJavaScripFormatting', {}),
+                    })
+                end,
+            })
         end
     },
 })
