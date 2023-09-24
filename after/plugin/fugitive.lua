@@ -1,2 +1,5 @@
 vim.keymap.set("n", "<leader>gc", "<cmd>Git commit<CR>")
 vim.keymap.set("n", "<leader>ga", "<cmd>Git add .<CR>")
+vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>")
+vim.keymap.set("n", "<leader>gd", "<cmd>Git diff<CR>")
+vim.keymap.set("n", "<leader>gm", "<cmd>Git push -u origin HEAD<CR>")
