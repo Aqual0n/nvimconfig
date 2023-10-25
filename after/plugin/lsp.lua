@@ -11,7 +11,7 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     -- Replace the language servers listed here 
     -- with the ones you want to install
-    ensure_installed = { 'tsserver', 'eslint', 'vuels', 'tailwindcss', 'cssls', 'lua_ls' },
+    ensure_installed = { 'tsserver', 'eslint', 'vuels', 'volar', 'tailwindcss', 'cssls', 'lua_ls' },
     handlers = {
         lsp_zero.default_setup,
         cssls = function ()
@@ -28,7 +28,7 @@ require('mason-lspconfig').setup({
                 settings = {
                     css = { validate = true, lint = { unknownAtRules = "ignore" } },
                     less = { validate = true, lint = { unknownAtRules = "ignore" } },
-                    scss = { validate = true, lint = { unknownAtRules = "ignore" } },
+                    scss = { validate = false, lint = { unknownAtRules = "ignore" } },
                 },
             }
             lspconfig.eslint.setup({
