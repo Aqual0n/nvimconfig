@@ -12,7 +12,7 @@ end)
 telescope.setup{
   extensions = {
    tmuxdir = {
-     base_dirs = {"~/.config/nvim", "~/", "~/work"},
+     base_dirs = {"~/.config/nvim", "~/", "~/work", "~/pet_projects"},
      find_cmd = {"find", ".", "-type", "d", "-maxdepth", "1"},
    }
   }
