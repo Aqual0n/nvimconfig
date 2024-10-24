@@ -8,7 +8,7 @@ lsp_zero.on_attach(function(client, bufnr)
 end)
 
 local ensure_installed = {
-    'tsserver',
+    'ts_ls',
     'eslint',
     'vuels',
     'volar',
