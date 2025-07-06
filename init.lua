@@ -1,2 +1,1 @@
 require('aqln')
-print('hello')

@@ -12,8 +12,8 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    -- in-vim tmux sessionizer
     use 'viniarck/telescope-tmuxdir.nvim'
-
 
     use {
         "folke/tokyonight.nvim",
@@ -24,30 +24,8 @@ return require('packer').startup(function(use)
 
     use("nvim-treesitter/nvim-treesitter-context")
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use('nvim-treesitter/playground')
 
     use('ThePrimeagen/harpoon')
-    use('ThePrimeagen/vim-be-good')
-
-    use('mbbill/undotree')
-    use('tpope/vim-fugitive')
-    use('tpope/vim-surround')
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-        requires = {
-            --- Uncomment these if you want to manage LSP servers from neovim
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
-
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'L3MON4D3/LuaSnip' },
-        }
-    }
 
     use({
         "okuuva/auto-save.nvim",
@@ -58,15 +36,27 @@ return require('packer').startup(function(use)
             }
         end,
     })
-    use("windwp/nvim-autopairs")
-    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
-    end }
 
-    use({
-        "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        tag = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!:).
-        run = "make install_jsregexp"
-    })
+    use('mbbill/undotree')
+    use('tpope/vim-fugitive')
+    use {
+        'windwp/nvim-autopairs',
+        event = 'InsertEnter',
+        config = function()
+            require('nvim-autopairs').setup {}
+        end
+    }
+
+    -- LSP
+    use({ 'neovim/nvim-lspconfig' })
+    use({ 'mason-org/mason.nvim' })
+    use({ 'mason-org/mason-lspconfig.nvim' })
+    -- Autocompletion
+    use({ 'hrsh7th/cmp-nvim-lsp' })
+    use({ 'hrsh7th/cmp-buffer' })
+    use({ 'hrsh7th/cmp-path' })
+    use({ 'hrsh7th/cmp-cmdline' })
+    use({ 'hrsh7th/nvim-cmp'} )
+    use({ 'L3MON4D3/LuaSnip' })
+    use({ 'saadparwaiz1/cmp_luasnip' })
 end)
