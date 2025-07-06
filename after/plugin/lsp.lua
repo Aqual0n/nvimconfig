@@ -1,5 +1,18 @@
 -- TODO: THIS FILE IS A MESS, WE WILL HAVE TO FIX IT
 -- AT SOME POINT
+--
+
+-- hover border fix
+vim.api.nvim_create_autocmd('LspAttach', {
+  callback = function(event)
+    vim.keymap.set('n', 'K', function()
+      vim.lsp.buf.hover {
+        border = 'rounded',
+      }
+    end, { buffer = event.buf })
+  end,
+})
+
 -- error messages
 vim.diagnostic.config({
     virtual_text = true,
@@ -25,7 +38,7 @@ local ensure_installed = {
     'vue_ls',
     'vtsls',
     --js
-    'ts_ls',
+    --'ts_ls',
     'eslint',
     --css
     'tailwindcss',
