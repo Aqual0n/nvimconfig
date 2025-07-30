@@ -61,7 +61,7 @@ vim.lsp.config('lua_ls', {
     }
 })
 
-vim.lsp.config('scssls', {
+vim.lsp.config('cssls', {
     settings = {
         css = { validate = true, lint = { unknownAtRules = "ignore" } },
         less = { validate = true, lint = { unknownAtRules = "ignore" } },
@@ -71,7 +71,7 @@ vim.lsp.config('scssls', {
 
 vim.lsp.config('ruby_lsp', {
     cmd = { "bundle", "exec", "ruby-lsp" },
-    filetypes = { 'ruby', 'eruby' },
+    filetypes = { 'ruby', 'eruby', 'erb' },
     init_options = {
         formatter = 'auto'
     },
@@ -80,7 +80,7 @@ vim.lsp.config('ruby_lsp', {
 
 vim.lsp.config('rubocop', {
     cmd = { "bundle", "exec", "rubocop" },
-    filetypes = { 'ruby', 'eruby' },
+    filetypes = { 'ruby', 'eruby', 'erb' },
     init_options = {
         formatter = 'auto'
     },
@@ -157,7 +157,6 @@ local vue_ls_config = {
         timer:start(100, 200, vim.schedule_wrap(function()
             tries = tries + 1
             if wait_for_vtsls() then
-                vim.notify("vue_ls: forwarding tsserver requests via vtsls ✅", vim.log.levels.INFO)
                 timer:stop()
                 timer:close()
             elseif tries > 50 then
